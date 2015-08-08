@@ -1,0 +1,12 @@
+[user]
+	name = Harry Chang
+	email = harry830622@gmail.com
+[core]
+	editor = vim
+[color]
+	ui = true
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
