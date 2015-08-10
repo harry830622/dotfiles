@@ -32,6 +32,14 @@ Plugin 'othree/html5.vim'
 Plugin 'bling/vim-airline'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'ervandew/supertab'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-commentary'
+Plugin 'easymotion/vim-easymotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,8 +62,12 @@ syntax on
 " Support 256 colors environment
 set t_Co=256
 
+" Set colorscheme
 set background=dark
 colorscheme solarized
+
+" Hight the current line
+set cursorline
 
 "------------------------------------------------------------
 " Must have options {{{1
@@ -152,6 +164,7 @@ set cmdheight=2
 
 " Display line numbers on the left
 set number
+set relativenumber
 
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
@@ -159,8 +172,12 @@ set notimeout ttimeout ttimeoutlen=200
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
 
+" Wrap the code beyond 120 cols while highlight the 81th cols
 set textwidth=120
 set colorcolumn=81
+
+" Tell vim where to find the tags files
+set tags=./tags
 
 "------------------------------------------------------------
 " Indentation options {{{1
@@ -184,13 +201,32 @@ set expandtab
 "
 " Useful mappings
 
+" Map <leader>
+let mapleader=","
+
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
 
+" Open $MYVIMRC
+nnoremap <Leader>vc :e $MYVIMRC<CR>
+
+" Source current file
+nnoremap <Leader>so :so %<CR>
+
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <C-L> :nohl<CR><C-L>
+" nnoremap <C-L> :nohl<CR><C-L>
+nnoremap <Leader>h :nohl<CR>
+
+" Get off my lawn
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
+" Force writing this file if forgot sudo when open this file
+cnoremap :w!! :w !sudo tee % > /dev/null<CR>
 
 "------------------------------------------------------------
 
