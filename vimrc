@@ -25,7 +25,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'octol/vim-cpp-enhanced-highlight'
+"Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/html5.vim'
@@ -36,7 +38,8 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-commentary'
 Plugin 'easymotion/vim-easymotion'
@@ -159,7 +162,7 @@ set t_vb=
 set mouse=a
 
 " Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
+" press <Enter> to continue
 set cmdheight=2
 
 " Display line numbers on the left
@@ -178,6 +181,18 @@ set colorcolumn=81
 
 " Tell vim where to find the tags files
 set tags=./tags
+
+" Change cursor shape in different mode
+if has("autocmd")
+    au InsertEnter *
+        \ if v:insertmode == 'i' |
+        \   silent execute "!gnome-terminal-cursor-shape.sh ibeam" |
+        \ elseif v:insertmode == 'r' |
+        \   silent execute "!gnome-terminal-cursor-shape.sh underline" |
+        \ endif
+    au InsertLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
+    au VimLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
+endif
 
 "------------------------------------------------------------
 " Indentation options {{{1
@@ -217,7 +232,7 @@ nnoremap <Leader>so :so %<CR>
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 " nnoremap <C-L> :nohl<CR><C-L>
-nnoremap <Leader>h :nohl<CR>
+nnoremap <Leader>hl :nohl<CR>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -236,4 +251,12 @@ cnoremap :w!! :w !sudo tee % > /dev/null<CR>
 " Airline
 let g:airline_powerline_fonts = 1
 
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<C-z>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+
+"YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_global_ycm_extra_conf = "~/dotfiles/ycm_extra_conf.py"
 "------------------------------------------------------------
