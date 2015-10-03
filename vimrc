@@ -1,4 +1,5 @@
 " URL: http://vim.wikia.com/wiki/Example_vimrc
+"
 " Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
 " Description: A minimal, but feature rich, example .vimrc. If you are a
 "              newbie, basing your first .vimrc on this file is a good choice.
@@ -250,6 +251,7 @@ cnoremap :w!! :w !sudo tee % > /dev/null<CR>
 
 " Airline
 let g:airline_powerline_fonts = 1
+let $PYTHONPATH="/usr/lib/python3.5/site-packages"
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<C-z>"
