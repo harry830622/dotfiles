@@ -11,8 +11,15 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# RVM
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm"  ]] && source "$HOME/.rvm/scripts/rvm"
+
 # Enable syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Enable powerline fonts
+. /usr/share/zsh/site-contrib/powerline.zsh
 
 # Ignore duplicate lines in history
 setopt HIST_IGNORE_DUPS
@@ -35,4 +42,3 @@ alias paclocs="pacman -Qs"          # Search for package(s) in the local databas
 #alias pacown="pacman -Qo"           # Show package(s) owning the specified file(s)
 #alias pacexpl="pacman -D --asexp"   # Mark one or more installed packages as explicitly installed
 #alias pacimpl="pacman -D --asdep"   # Mark one or more installed packages as non explicitly installed
-
