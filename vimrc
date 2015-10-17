@@ -45,6 +45,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-commentary'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
