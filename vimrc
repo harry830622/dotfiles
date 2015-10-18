@@ -47,6 +47,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
+Plugin 'junegunn/vim-easy-align'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -261,7 +262,12 @@ let g:UltiSnipsExpandTrigger="<C-z>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
-"YouCompleteMe
+" YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = "~/dotfiles/ycm_extra_conf.py"
+
+" easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 "------------------------------------------------------------
