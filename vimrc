@@ -228,16 +228,15 @@ let mapleader=","
 " which is the default
 map Y y$
 
-" Open $MYVIMRC
-nnoremap <Leader>vc :e $MYVIMRC<CR>
+" Edit my vimrc
+nnoremap <Leader>ev :e $MYVIMRC<CR>
 
-" Source current file
-nnoremap <Leader>so :so %<CR>
+" Source my vimrc
+nnoremap <Leader>sv :so $MYVIMRC<CR>
 
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" Map <C-l> (redraw screen) to also turn off search highlighting until the
 " next search
-" nnoremap <C-L> :nohl<CR><C-L>
-nnoremap <Leader>hl :nohl<CR>
+nnoremap <Leader>hl :nohl<CR><C-l>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
