@@ -221,6 +221,13 @@ set expandtab
 "
 " Useful mappings
 
+" Replace <Esc> with jk
+inoremap jk <Esc>
+
+" Make eol and sol more convenient
+nnoremap H 0
+nnoremap L $
+
 " Map <leader>
 let mapleader=","
 
