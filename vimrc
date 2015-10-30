@@ -1,20 +1,15 @@
-" URL: http://vim.wikia.com/wiki/Example_vimrc
+" URL: https://raw.githubusercontent.com/harry830622/dotfiles/master/vimrc
 "
-" Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
-" Description: A minimal, but feature rich, example .vimrc. If you are a
-"              newbie, basing your first .vimrc on this file is a good choice.
-"              If you're a more advanced user, building your own .vimrc based
-"              on this file is still a good idea.
-
+" Author: harry830622
+" Email: harry830622@gmail.com
+"
 "------------------------------------------------------------
-" Features {{{1
-"
-" These options and commands enable some very useful features in Vim, that
-" no user should have to live without.
-
+" Plugins (Vundle must be on top of the vimrc){{{1
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
+
+filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -52,8 +47,6 @@ Plugin 'junegunn/vim-easy-align'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
 
 " Brief help
 " :PluginList       - lists configured plugins
@@ -63,6 +56,31 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+"------------------------------------------------------------
+" Plugins' settings {{{1
+
+" Airline
+let g:airline_powerline_fonts = 1
+let $PYTHONPATH="/usr/lib/python3.5/site-packages"
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<C-z>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_global_ycm_extra_conf = "~/dotfiles/ycm_extra_conf.py"
+
+" easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+"------------------------------------------------------------
+" Features {{{1
+"
+" These options and commands enable some very useful features in Vim, that
+" no user should have to live without.
 
 " Enable syntax highlighting
 syntax on
@@ -73,9 +91,6 @@ set t_Co=256
 " Set colorscheme
 set background=dark
 colorscheme solarized
-
-" Hight the current line
-set cursorline
 
 "------------------------------------------------------------
 " Must have options {{{1
@@ -112,6 +127,7 @@ set showcmd
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
 set hlsearch
+set incsearch
 
 " Modelines have historically been a source of security vulnerabilities. As
 " such, it may be a good idea to disable them and use the securemodelines
@@ -184,6 +200,9 @@ set pastetoggle=<F11>
 set textwidth=120
 set colorcolumn=81
 
+" Highlight the current line
+set cursorline
+
 " Tell vim where to find the tags files
 set tags=./tags
 
@@ -251,29 +270,15 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" Force writing this file if forgot sudo when open this file
-cnoremap :w!! :w !sudo tee % > /dev/null<CR>
+" Force writing the read-only file
+cmap w!! w !sudo tee > /dev/null %
 
 "------------------------------------------------------------
+" Autocmds {{{1
 
-"------------------------------------------------------------
-" Plugin settings
-
-" Airline
-let g:airline_powerline_fonts = 1
-let $PYTHONPATH="/usr/lib/python3.5/site-packages"
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<C-z>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-
-" YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_global_ycm_extra_conf = "~/dotfiles/ycm_extra_conf.py"
-
-" easy-align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
 
 "------------------------------------------------------------
