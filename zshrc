@@ -25,6 +25,12 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 setopt HIST_IGNORE_DUPS
 
 # Alias
+
+alias mkdir="mkdir -vp"
+alias cp = "cp -v"
+alias mv = "mv -v"
+alias rm = "rm -v"
+
 # Pacman
 alias pacupg="sudo pacman -Syu"     # Synchronize with repositories and then upgrade packages that are out of date on the local system.
 #alias pacdl="pacman -Sw"            # Download specified package(s) as .tar.xz ball
