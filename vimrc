@@ -28,7 +28,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/html5.vim'
 Plugin 'bling/vim-airline'
-Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'mattn/emmet-vim'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'tpope/vim-fugitive'
@@ -196,8 +196,8 @@ set notimeout ttimeout ttimeoutlen=200
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
 
-" Wrap the code beyond 120 cols while highlight the 81th cols
-set textwidth=120
+" Wrap the code beyond 80 columns
+set textwidth=80
 set colorcolumn=81
 
 " Highlight the current line
@@ -208,14 +208,14 @@ set tags=./tags
 
 " Change cursor shape in different mode
 if has("autocmd")
-    au InsertEnter *
+  au InsertEnter *
         \ if v:insertmode == 'i' |
         \   silent execute "!~/.gnome-terminal-cursor-shape.sh ibeam" |
         \ elseif v:insertmode == 'r' |
         \   silent execute "!~/.gnome-terminal-cursor-shape.sh underline" |
         \ endif
-    au InsertLeave * silent execute "!~/.gnome-terminal-cursor-shape.sh block"
-    au VimLeave * silent execute "!~/.gnome-terminal-cursor-shape.sh block"
+  au InsertLeave * silent execute "!~/.gnome-terminal-cursor-shape.sh block"
+  au VimLeave * silent execute "!~/.gnome-terminal-cursor-shape.sh block"
 endif
 
 "------------------------------------------------------------
@@ -279,6 +279,16 @@ cmap w!! w !sudo tee > /dev/null %
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType cpp setlocal textwidth=120
+  autocmd FileType cpp setlocal colorcolumn=121
+  autocmd FileType gitcommit setlocal textwidth=72
+  autocmd FileType gitcommit setlocal colorcolumn=73
+augroup END
+
+augroup before_write
+  autocmd!
+  autocmd BufWritePre * normal! gg=G``
+  autocmd BufWritePre * StripWhitespace
 augroup END
 
 "------------------------------------------------------------
