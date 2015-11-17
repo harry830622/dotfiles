@@ -287,7 +287,7 @@ augroup END
 
 augroup before_write
   autocmd!
-  autocmd BufWritePre * normal! gg=G``
+  " autocmd BufWritePre * normal! gg=G``
   autocmd BufWritePre * StripWhitespace
 augroup END
 
