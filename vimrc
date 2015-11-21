@@ -43,6 +43,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -75,6 +76,9 @@ let g:ycm_global_ycm_extra_conf = "~/dotfiles/ycm_extra_conf.py"
 " easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" Syntastic
+let g:syntastic_javascript_checkers = ['eslint']
 
 "------------------------------------------------------------
 " Features {{{1
