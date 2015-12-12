@@ -19,7 +19,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Enable powerline fonts
-. /usr/share/zsh/site-contrib/powerline.zsh
+# . /usr/share/zsh/site-contrib/powerline.zsh
 
 # Ignore duplicate lines in history
 setopt HIST_IGNORE_DUPS
