@@ -26,6 +26,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'othree/html5.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -41,10 +42,11 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-commentary'
 " Plugin 'easymotion/vim-easymotion'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'chrisbra/unicode.vim'
 " Plugin 'tpope/vim-rails'
 " Plugin 'tpope/vim-bundler'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'scrooloose/syntastic'
+" Plugin 'junegunn/vim-easy-align'
+" Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -63,7 +65,8 @@ filetype plugin indent on    " required
 
 " Airline
 let g:airline_powerline_fonts = 1
-let $PYTHONPATH="/usr/lib/python3.5/site-packages"
+let g:airline#extensions#ycm#enabled = 1
+" let $PYTHONPATH="/usr/lib/python3.5/site-packages"
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<C-z>"
@@ -71,8 +74,10 @@ let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = "~/dotfiles/ycm_extra_conf.py"
+let g:ycm_error_symbol = "✗"
+let g:ycm_warning_symbol = "⚠"
 
 " easy-align
 xmap ga <Plug>(EasyAlign)
