@@ -4,7 +4,7 @@
 " Email: harry830622@gmail.com
 "
 "------------------------------------------------------------
-" Plugins (Vundle must be on top of the vimrc){{{1
+" Plugins (Vundle must be on top of the vimrc) {{{1
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
@@ -21,6 +21,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'
 "Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -33,7 +34,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'mattn/emmet-vim'
 Plugin 'edkolev/tmuxline.vim'
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 "Plugin 'ervandew/supertab'
@@ -42,10 +43,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-commentary'
 " Plugin 'easymotion/vim-easymotion'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'chrisbra/unicode.vim'
 " Plugin 'tpope/vim-rails'
 " Plugin 'tpope/vim-bundler'
-" Plugin 'junegunn/vim-easy-align'
 " Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
@@ -77,14 +76,10 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 " let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = "~/dotfiles/ycm_extra_conf.py"
 let g:ycm_error_symbol = "✗"
-let g:ycm_warning_symbol = "⚠"
-
-" easy-align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+let g:ycm_warning_symbol = "△"
 
 " Syntastic
-let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_checkers = ['eslint']
 
 "------------------------------------------------------------
 " Features {{{1
@@ -100,7 +95,8 @@ set t_Co=256
 
 " Set colorscheme
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
+" colorscheme solarized
 
 "------------------------------------------------------------
 " Must have options {{{1
@@ -283,21 +279,22 @@ nnoremap <Down> :echoe "Use j"<CR>
 " Force writing the read-only file
 cmap w!! w !sudo tee > /dev/null %
 
+" Format codes by clang-format
+nnoremap <C-i> :pyf /usr/share/clang/clang-format.py<CR>
+
 "------------------------------------------------------------
 " Autocmds {{{1
 
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
-  autocmd FileType cpp setlocal textwidth=120
-  autocmd FileType cpp setlocal colorcolumn=121
   autocmd FileType gitcommit setlocal textwidth=72
   autocmd FileType gitcommit setlocal colorcolumn=73
 augroup END
 
 augroup before_write
   autocmd!
-  " autocmd BufWritePre * normal! gg=G``
+  autocmd BufWritePre * normal! <C-i>
   autocmd BufWritePre * StripWhitespace
 augroup END
 
