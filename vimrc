@@ -243,8 +243,6 @@ set expandtab
 
 "------------------------------------------------------------
 " Mappings {{{1
-"
-" Useful mappings
 
 " Replace <Esc> with jk
 inoremap jk <Esc>
@@ -258,7 +256,7 @@ let mapleader=" "
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
-map Y y$
+nnoremap Y y$
 
 " Edit my vimrc
 nnoremap <Leader>ev :e $MYVIMRC<CR>
@@ -268,7 +266,7 @@ nnoremap <Leader>sv :so $MYVIMRC<CR>
 
 " Map <C-l> (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <Leader>hl :nohl<CR><C-l>
+nnoremap <Leader>hl :noh<CR><C-l>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -277,10 +275,15 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " Force writing the read-only file
-cmap w!! w !sudo tee > /dev/null %
+cnoremap w!! w !sudo tee > /dev/null %
 
 " Format codes by clang-format
 nnoremap <C-i> :pyf /usr/share/clang/clang-format.py<CR>
+
+" Easier to write & quit
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>wq :wq<CR>
 
 "------------------------------------------------------------
 " Autocmds {{{1
