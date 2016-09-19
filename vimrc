@@ -46,6 +46,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 " Plugin 'tpope/vim-rails'
 " Plugin 'tpope/vim-bundler'
 " Plugin 'scrooloose/syntastic'
+Plugin 'xuhdev/vim-latex-live-preview'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -283,7 +284,10 @@ nnoremap <C-i> :pyf /usr/share/clang/clang-format.py<CR>
 " Easier to write & quit
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>wq :wq<CR>
+
+" Easier to copy to & paste from the system clipboard
+nnoremap <Leader>y "+y
+nnoremap <Leader>p "+p
 
 "------------------------------------------------------------
 " Autocmds {{{1
