@@ -3,21 +3,19 @@
 " Author: harry830622
 " Email: harry830622@gmail.com
 "
-"------------------------------------------------------------
 " Plugins (Vundle must be on top of the vimrc) {{{1
+
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
 
-filetype off                  " required
+filetype off
 
-" set the runtime path to include Vundle and initialize
+" Set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
+" Let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'altercation/vim-colors-solarized'
@@ -49,18 +47,9 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'xuhdev/vim-latex-live-preview'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()
+filetype plugin indent on
 
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"------------------------------------------------------------
 " Plugins' settings {{{1
 
 " Airline
@@ -83,26 +72,7 @@ let g:ycm_warning_symbol = "△"
 " let g:syntastic_javascript_checkers = ['eslint']
 
 "------------------------------------------------------------
-" Features {{{1
-"
-" These options and commands enable some very useful features in Vim, that
-" no user should have to live without.
-
-" Enable syntax highlighting
-syntax on
-
-" Support 256 colors environment
-set t_Co=256
-
-" Set colorscheme
-set background=dark
-colorscheme gruvbox
-" colorscheme solarized
-
-"------------------------------------------------------------
-" Must have options {{{1
-"
-" These are highly recommended options.
+" Usability options {{{1
 
 " Vim with default settings does not allow easy switching between multiple files
 " in the same editor window. Users can use multiple split windows or multiple
@@ -119,12 +89,6 @@ colorscheme gruvbox
 " crashes.
 set hidden
 
-" Note that not everyone likes working this way (with the hidden option).
-" Alternatives include using tabs or split windows instead of re-using the same
-" window as mentioned above, and/or either of the following options:
-" set confirm
-" set autowriteall
-
 " Better command-line completion
 set wildmenu
 
@@ -136,20 +100,7 @@ set showcmd
 set hlsearch
 set incsearch
 
-" Modelines have historically been a source of security vulnerabilities. As
-" such, it may be a good idea to disable them and use the securemodelines
-" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-" set nomodeline
-
 set ff=unix
-
-"------------------------------------------------------------
-" Usability options {{{1
-"
-" These are options that users frequently set in their .vimrc. Some of them
-" change Vim's behaviour in ways which deviate from the true Vi way, but
-" which are considered to add usability. Which, if any, of these options to
-" use is very much a personal preference, but they are harmless.
 
 " Use case insensitive search, except when using capital letters
 set ignorecase
@@ -161,11 +112,6 @@ set backspace=indent,eol,start
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
-
-" Stop certain movements from always going to the first character of a line.
-" While this behaviour deviates from that of Vi, it does what most users
-" coming from other editors would expect.
-set nostartofline
 
 " Display the cursor position on the last line of the screen or in the status
 " line of a window
@@ -186,9 +132,6 @@ set visualbell
 " is unset, this does nothing.
 set t_vb=
 
-" Enable use of the mouse for all modes
-set mouse=a
-
 " Set the command window height to 2 lines, to avoid many cases of having to
 " press <Enter> to continue
 set cmdheight=2
@@ -197,18 +140,15 @@ set cmdheight=2
 set number
 set relativenumber
 
-" Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
-
-" Use <F11> to toggle between 'paste' and 'nopaste'
-set pastetoggle=<F11>
-
 " Wrap the code beyond 80 columns
 set textwidth=80
 set colorcolumn=81
 
 " Highlight the current line
 set cursorline
+
+" Set the timeout for mapping in ms, default is 1000
+set timeoutlen=500
 
 " Tell vim where to find the tags files
 set tags=./tags
@@ -225,25 +165,41 @@ if has("autocmd")
   au VimLeave * silent execute "!~/.gnome-terminal-cursor-shape.sh block"
 endif
 
-"------------------------------------------------------------
+" Color schemes {{{1
+"
+" These options and commands enable some very useful features in Vim, that
+" no user should have to live without.
+
+" Enable syntax highlighting
+syntax on
+
+" Support 256 colors environment
+set t_Co=256
+
+" Set colorscheme
+set background=dark
+colorscheme gruvbox
+" colorscheme solarized
+
 " Indentation options {{{1
 "
 " Indentation settings according to personal preference.
 
-" Indentation settings for using 4 spaces instead of tabs.
+" Indentation settings for using 2 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
-set shiftwidth=2
-set softtabstop=2
 set expandtab
+set softtabstop=2
+set shiftwidth=2
 
-" Indentation settings for using hard tabs for indent. Display tabs as
-" four characters wide.
-"set shiftwidth=4
-"set tabstop=4
+" Abbreviations {{{1
 
+iabbrev atg harry830622@gmail.com
+iabbrev ateda yhchang@eda.ee.ntu.edu.tw
 
-"------------------------------------------------------------
 " Mappings {{{1
+
+" Map <leader>
+let mapleader=" "
 
 " Replace <Esc> with jk
 inoremap jk <Esc>
@@ -251,9 +207,6 @@ inoremap jk <Esc>
 " Make eol and sol more convenient
 nnoremap H 0
 nnoremap L $
-
-" Map <leader>
-let mapleader=" "
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
@@ -279,17 +232,17 @@ nnoremap <Down> :echoe "Use j"<CR>
 cnoremap w!! w !sudo tee > /dev/null %
 
 " Format codes by clang-format
-nnoremap <C-i> :pyf /usr/share/clang/clang-format.py<CR>
+nnoremap <Leader>f :pyf /usr/share/clang/clang-format.py<CR>
 
 " Easier to write & quit
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>wq :wq<CR>
 
 " Easier to copy to & paste from the system clipboard
 nnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
 
-"------------------------------------------------------------
 " Autocmds {{{1
 
 augroup filetype_vim
