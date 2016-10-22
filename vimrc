@@ -18,11 +18,11 @@ call vundle#begin()
 " Let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
 "Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+" Plugin 'honza/vim-snippets'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
@@ -44,7 +44,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 " Plugin 'tpope/vim-rails'
 " Plugin 'tpope/vim-bundler'
 " Plugin 'scrooloose/syntastic'
-Plugin 'xuhdev/vim-latex-live-preview'
+" Plugin 'xuhdev/vim-latex-live-preview'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -55,21 +55,12 @@ filetype plugin indent on
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ycm#enabled = 1
-" let $PYTHONPATH="/usr/lib/python3.5/site-packages"
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<C-z>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " YouCompleteMe
-" let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = "~/dotfiles/ycm_extra_conf.py"
 let g:ycm_error_symbol = "✗"
 let g:ycm_warning_symbol = "△"
-
-" Syntastic
-" let g:syntastic_javascript_checkers = ['eslint']
+let g:ycm_autoclose_preview_window_after_insertion = 0
 
 "------------------------------------------------------------
 " Usability options {{{1
@@ -148,7 +139,7 @@ set colorcolumn=81
 set cursorline
 
 " Set the timeout for mapping in ms, default is 1000
-set timeoutlen=500
+" set timeoutlen=500
 
 " Tell vim where to find the tags files
 set tags=./tags
@@ -232,7 +223,7 @@ nnoremap <Down> :echoe "Use j"<CR>
 cnoremap w!! w !sudo tee > /dev/null %
 
 " Format codes by clang-format
-nnoremap <Leader>f :pyf /usr/share/clang/clang-format.py<CR>
+vnoremap <Leader>f :pyf /usr/share/clang/clang-format.py<CR>
 
 " Easier to write & quit
 nnoremap <Leader>w :w<CR>
@@ -240,8 +231,14 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
 
 " Easier to copy to & paste from the system clipboard
-nnoremap <Leader>y "+y
-nnoremap <Leader>p "+p
+vnoremap <Leader>y "+y<CR>
+nnoremap <Leader>p "+p<CR>
+
+" Toggle folding
+nnoremap <Leader>z za
+
+" Easier to close preview
+nnoremap <Leader>cp :pc<CR>
 
 " Autocmds {{{1
 
