@@ -60,7 +60,7 @@ let g:airline#extensions#ycm#enabled = 1
 let g:ycm_global_ycm_extra_conf = "~/dotfiles/ycm_extra_conf.py"
 let g:ycm_error_symbol = "✗"
 let g:ycm_warning_symbol = "△"
-let g:ycm_autoclose_preview_window_after_insertion = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 "------------------------------------------------------------
 " Usability options {{{1
@@ -204,26 +204,26 @@ nnoremap L $
 nnoremap Y y$
 
 " Edit my vimrc
-nnoremap <Leader>ev :e $MYVIMRC<CR>
+nnoremap <Leader>ev :edit $MYVIMRC<CR>
 
 " Source my vimrc
-nnoremap <Leader>sv :so $MYVIMRC<CR>
+nnoremap <Leader>sv :source $MYVIMRC<CR>
 
 " Map <C-l> (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <Leader>nh :noh<CR><C-l>
+nnoremap <Leader>nh :nohlsearch<CR><C-l>
 
 " Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+nnoremap <Left> :echoerr "Use h"<CR>
+nnoremap <Right> :echoerr "Use l"<CR>
+nnoremap <Up> :echoerr "Use k"<CR>
+nnoremap <Down> :echoerr "Use j"<CR>
 
 " Force writing the read-only file
 cnoremap w!! w !sudo tee > /dev/null %
 
 " Format codes by clang-format
-vnoremap <Leader>f :pyf /usr/share/clang/clang-format.py<CR>
+vnoremap <Leader>f :pyfile /usr/share/clang/clang-format.py<CR>
 
 " Easier to write & quit
 nnoremap <Leader>w :w<CR>
@@ -238,7 +238,7 @@ nnoremap <Leader>p "+p<CR>
 nnoremap <Leader>z za
 
 " Easier to close preview
-nnoremap <Leader>cp :pc<CR>
+nnoremap <Leader>cp :pclose<CR>
 
 " Easier to switch buffers back and forth
 nnoremap <Leader>b :b #<CR>
