@@ -211,7 +211,7 @@ nnoremap <Leader>sv :so $MYVIMRC<CR>
 
 " Map <C-l> (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <Leader>hl :noh<CR><C-l>
+nnoremap <Leader>nh :noh<CR><C-l>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -239,6 +239,23 @@ nnoremap <Leader>z za
 
 " Easier to close preview
 nnoremap <Leader>cp :pc<CR>
+
+" Easier to switch buffers back and forth
+nnoremap <Leader>b :b #<CR>
+
+" Select the whole file
+nnoremap <Leader>% ggVG
+
+" Map movements
+onoremap ip i)
+onoremap np :<C-u>normal! f(vi)<CR>
+onoremap lp :<C-u>normal! F)vi)<CR>
+
+onoremap ib i]
+onoremap nb :<C-u>normal! f[vi]<CR>
+onoremap lb :<C-u>normal! F]vi]<CR>
+
+onoremap ic i}
 
 " Autocmds {{{1
 
