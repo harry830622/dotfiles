@@ -245,6 +245,10 @@ nnoremap <Leader>cp :pc<CR>
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+augroup filetype_gitcommit
+  autocmd!
   autocmd FileType gitcommit setlocal textwidth=72
   autocmd FileType gitcommit setlocal colorcolumn=73
 augroup END
