@@ -226,9 +226,9 @@ cnoremap w!! w !sudo tee > /dev/null %
 vnoremap <Leader>f :pyfile /usr/share/clang/clang-format.py<CR>
 
 " Easier to write & quit
-nnoremap <Leader>w :w<CR>
+nnoremap <Leader>w :update<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>wq :wq<CR>
+nnoremap <Leader>x :x<CR>
 
 " Easier to copy to & paste from the system clipboard
 vnoremap <Leader>y "+y<CR>
