@@ -11,15 +11,10 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# RVM
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm"  ]] && source "$HOME/.rvm/scripts/rvm"
-
 # Enable syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Enable powerline fonts
-# . /usr/share/zsh/site-contrib/powerline.zsh
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 # Ignore duplicate lines in history
 setopt HIST_IGNORE_DUPS
