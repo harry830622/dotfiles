@@ -11,11 +11,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# Enable syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
-
 # Ignore duplicate lines in history
 setopt HIST_IGNORE_DUPS
 
@@ -43,5 +38,13 @@ alias paclocs="pacman -Qs"          # Search for package(s) in the local databas
 #alias pacown="pacman -Qo"           # Show package(s) owning the specified file(s)
 #alias pacexpl="pacman -D --asexp"   # Mark one or more installed packages as explicitly installed
 #alias pacimpl="pacman -D --asdep"   # Mark one or more installed packages as non explicitly installed
+
+# Enable syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+
+export NVM_DIR="/home/harry/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
