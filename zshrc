@@ -43,3 +43,5 @@ alias paclocs="pacman -Qs"          # Search for package(s) in the local databas
 #alias pacown="pacman -Qo"           # Show package(s) owning the specified file(s)
 #alias pacexpl="pacman -D --asexp"   # Mark one or more installed packages as explicitly installed
 #alias pacimpl="pacman -D --asdep"   # Mark one or more installed packages as non explicitly installed
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
