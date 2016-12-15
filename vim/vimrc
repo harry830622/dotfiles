@@ -1,7 +1,7 @@
-" URL: https://raw.githubusercontent.com/harry830622/dotfiles/master/vimrc
-"
 " Author: harry830622
 " Email: harry830622@gmail.com
+
+" Variables {{{1
 
 let g:dot_dir = $dot_dir
 
@@ -254,5 +254,3 @@ augroup before_write
   autocmd!
   autocmd BufWritePre * StripWhitespace
 augroup END
-
-"------------------------------------------------------------
