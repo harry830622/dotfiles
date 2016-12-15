@@ -1,7 +1,5 @@
-#!/bin/sh
-# DEFAULTPROF=`dconf read /org/gnome/terminal/legacy/profiles:/default`
-# DEFAULTPROF=`echo "$DEFAULTPROF" | sed -e "s/^'/:/" -e "s/'$//"`
-# dconf write /org/gnome/terminal/legacy/profiles:/$DEFAULTPROF/cursor-shape "'$1'"
+#!/usr/bin/env bash
+
 cd ~
 dconf list /org/gnome/terminal/legacy/profiles:/ > .gnome_terminal_profile_list
 while IFS='' read -r line || [[ -n "$line"  ]]; do

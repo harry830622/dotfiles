@@ -1,14 +1,25 @@
 #!/usr/bin/env bash
 
-ln -s ~/dotfiles/vimrc ~/.vimrc
-ln -s ~/dotfiles/zshrc ~/.zshrc
-ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
-ln -s ~/dotfiles/gitconfig ~/.gitconfig
-ln -s ~/dotfiles/gitignore ~/.gitignore
+dot_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+echo -e "dot_dir=$dot_dir\nexport dot_dir" > ~/.myenv
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [[ ! -d ~/.zprezto ]]; then
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
+fi
 
-cp ~/dotfiles/gnome-terminal-cursor-shape.sh ~/.gnome-terminal-cursor-shape.sh
-chmod +x ~/.gnome-terminal-cursor-shape.sh
+if [[ ! -d ~/.vim ]]; then
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+if [[ ! -d ~/.tmux ]]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
+ln -s "$dot_dir/zsh/zpreztorc" ~/.zpreztorc
+ln -s "$dot_dir/zsh/zshrc" ~/.zshrc
+ln -s "$dot_dir/vim/vimrc" ~/.vimrc
+ln -s "$dot_dir/tmux/tmux.conf" ~/.tmux.conf
+ln -s "$dot_dir/git/gitconfig" ~/.gitconfig
+ln -s "$dot_dir/git/gitignore" ~/.gitignore
