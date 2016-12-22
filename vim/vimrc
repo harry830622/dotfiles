@@ -17,6 +17,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
+Plug 'kien/ctrlp.vim'
 
 Plug 'Valloric/YouCompleteMe'
 
@@ -127,6 +128,10 @@ set cursorline
 " Set the timeout for mapping in ms, default is 1000
 " set timeoutlen=500
 
+set cscopetag
+set csto=0
+cs add cscope.out
+
 " Color schemes {{{1
 "
 " These options and commands enable some very useful features in Vim, that
@@ -226,6 +231,15 @@ onoremap nb :<C-u>normal! f[vi]<CR>
 onoremap lb :<C-u>normal! F]vi]<CR>
 
 onoremap ic i}
+
+nmap <Leader>css :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>csg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>csc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>cst :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>cse :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>csf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <Leader>csi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <Leader>csd :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 " Autocmds {{{1
 
