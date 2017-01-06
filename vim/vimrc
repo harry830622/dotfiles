@@ -16,6 +16,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-vinegar'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
@@ -59,7 +60,7 @@ let g:syntastic_style_error_symbol = "✠"
 let g:syntastic_warning_symbol = "∆"
 let g:syntastic_style_warning_symbol = "≈"
 let g:syntastic_javascript_checkers = ["eslint"]
-let g:syntastic_javascript_eslint_args = "--fix"
+" let g:syntastic_javascript_eslint_args = "--fix"
 
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = g:dot_dir . "/vim/ycm_extra_conf.py"
@@ -222,10 +223,15 @@ nnoremap <leader>p "+p
 nnoremap <leader>z za
 
 " Easier to close preview
-nnoremap <leader>cp :pclose<cr>
+nnoremap <leader>pc :pclose<cr>
 
-" Easier to switch buffers back and forth
-nnoremap <leader>b :b #<cr>
+" Easier to close location
+nnoremap <leader>lc :lclose<cr>
+
+" Easier to navigate buffers
+nnoremap <leader>bb :b #<cr>
+nnoremap <leader>bn :bn<cr>
+nnoremap <leader>bp :bp<cr>
 
 " Select the whole file
 nnoremap <leader>% ggVG
@@ -244,7 +250,6 @@ onoremap ic i}
 " Plug
 nnoremap <leader>pi :PlugInstall<cr>
 nnoremap <leader>pu :PlugUpdate<cr>
-nnoremap <leader>pc :PlugClean<cr>
 
 " GitGutter
 nnoremap ]h :GitGutterNextHunk<cr>
