@@ -9,3 +9,6 @@ source ~/.myenv
 if [[ -d ~/.vim/plugged/gruvbox ]]; then
   source ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
 fi
+
+export NVM_DIR="/home/harry/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
