@@ -17,34 +17,31 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-vinegar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kien/ctrlp.vim'
+Plug 'mattn/emmet-vim'
+Plug 'w0rp/ale'
 
-Plug 'Valloric/YouCompleteMe'
+Plug 'morhetz/gruvbox'
+
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
 
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'morhetz/gruvbox'
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-Plug 'othree/html5.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mattn/emmet-vim'
-" Plug 'vim-syntastic/syntastic'
-Plug 'w0rp/ale'
-
 call plug#end()
 
 " Plugins' settings {{{1
 
-" Airline
+" vim-airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ycm#enabled = 1
 let g:airline#extensions#ycm#error_symbol = "✗ "
@@ -53,19 +50,7 @@ let g:airline#extensions#ale#error_symbol = "✗ "
 let g:airline#extensions#ale#warning_symbol = "∆ "
 let g:airline#extensions#tabline#enabled = 1
 
-" Syntastic
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_error_symbol = "✗"
-" let g:syntastic_style_error_symbol = "✠"
-" let g:syntastic_warning_symbol = "∆"
-" let g:syntastic_style_warning_symbol = "≈"
-" let g:syntastic_javascript_checkers = ["eslint"]
-" let g:syntastic_javascript_eslint_args = "--fix"
-
-" ALE
+" ale
 let g:ale_linters = {
       \ "javascript": ["eslint"],
       \ "c": [],
@@ -249,22 +234,11 @@ nnoremap <leader>bp :bp<cr>
 " Select the whole file
 nnoremap <leader>% ggVG
 
-" Map movements
-onoremap ip i)
-onoremap np :<c-u>normal! f(vi)<cr>
-onoremap lp :<c-u>normal! F)vi)<cr>
-
-onoremap ib i]
-onoremap nb :<c-u>normal! f[vi]<cr>
-onoremap lb :<c-u>normal! F]vi]<cr>
-
-onoremap ic i}
-
-" Plug
+" vim-plug
 nnoremap <leader>pi :PlugInstall<cr>
 nnoremap <leader>pu :PlugUpdate<cr>
 
-" GitGutter
+" vim-gitgutter
 nnoremap ]h :GitGutterNextHunk<cr>
 nnoremap [h :GitGutterPrevHunk<cr>
 
