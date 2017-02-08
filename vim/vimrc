@@ -26,6 +26,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'
+Plug 'junegunn/vim-easy-align'
 
 Plug 'morhetz/gruvbox'
 
@@ -241,6 +242,10 @@ nnoremap <leader>pu :PlugUpdate<cr>
 " vim-gitgutter
 nnoremap ]h :GitGutterNextHunk<cr>
 nnoremap [h :GitGutterPrevHunk<cr>
+
+" vim-easy-align
+xmap ga <plug>(EasyAlign)
+nmap ga <plug>(EasyAlign)
 
 " Autocmds {{{1
 
