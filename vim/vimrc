@@ -300,6 +300,7 @@ augroup END
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType text,markdown,asciidoc setlocal spell
 augroup END
 
 augroup before_write
