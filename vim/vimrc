@@ -27,6 +27,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'
 Plug 'junegunn/vim-easy-align'
+Plug 'sbdchd/neoformat'
 
 Plug 'morhetz/gruvbox'
 
@@ -59,13 +60,18 @@ let g:ale_linters = {
       \ }
 let g:ale_sign_error = "✗"
 let g:ale_sign_warning = "∆"
-" let g:ale_javascript_eslint_options = "--fix"
+let g:ale_javascript_eslint_use_global = 1
+" let g:ale_javascript_eslint_options = " --fix"
 
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = g:dot_dir . "/vim/ycm_extra_conf.py"
 let g:ycm_error_symbol = "✗"
 let g:ycm_warning_symbol = "∆"
 " let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" Neoformat
+let g:neoformat_enabled_javascript = ["prettiereslint"]
+let g:neoformat_enabled_python = ["yapf"]
 
 " Usability options {{{1
 
@@ -228,9 +234,10 @@ nnoremap <leader>pc :pclose<cr>
 nnoremap <leader>lc :lclose<cr>
 
 " Easier to navigate buffers
-nnoremap <leader>bb :b #<cr>
+nnoremap <leader>bb :b#<cr>
 nnoremap <leader>bn :bn<cr>
 nnoremap <leader>bp :bp<cr>
+nnoremap <leader>bd :bd<cr>
 
 " Select the whole file
 nnoremap <leader>% ggVG
@@ -246,6 +253,9 @@ nnoremap [h :GitGutterPrevHunk<cr>
 " vim-easy-align
 xmap ga <plug>(EasyAlign)
 nmap ga <plug>(EasyAlign)
+
+" Format a whole buffer using Neoformat
+nnoremap <leader>f :Neoformat<cr>
 
 " Autocmds {{{1
 
@@ -286,9 +296,14 @@ augroup END
 
 augroup filetype_cpp
   autocmd!
-  autocmd FileType cpp
-        \ vnoremap <buffer> <leader>f
-        \ :pyfile /usr/share/clang/clang-format.py<cr>
+  " autocmd FileType cpp
+  "       \ vnoremap <buffer> <leader>f
+  "       \ :pyfile /usr/share/clang/clang-format.py<cr>
+  autocmd BufNewFile *.hpp
+        \ silent execute "normal! i#ifndef " . expand("%:t:r") . "_hpp\<esc>"
+        \ . "viwU" . "yypwcwdefine\<esc>" . "o#endif\<esc>"
+        \ . "ko\nclass " . expand("%:t:r") . "\<esc>" . "B~"
+        \ . "A {\npublic:\nprivate:\n};\n\<esc>"
 augroup END
 
 augroup filetype_gitcommit
