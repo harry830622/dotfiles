@@ -14,7 +14,11 @@ if [[ ! -d ~/.vim ]]; then
 fi
 
 if [[ ! -d ~/.tmux ]]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  git clone https://github.com/tmux-plugins/tpm.git ~/.tmux/plugins/tpm
+fi
+
+if [[ ! -f ~/.z.sh ]]; then
+  curl -fLo ~/.z.sh https://raw.githubusercontent.com/rupa/z/master/z.sh
 fi
 
 ln -s "$dot_dir/zsh/zpreztorc" ~/.zpreztorc
