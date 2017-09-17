@@ -70,7 +70,13 @@ let g:ycm_warning_symbol = "∆"
 " let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Neoformat
-let g:neoformat_enabled_javascript = ["prettiereslint"]
+let g:neoformat_javascript_myprettiereslint = {
+      \ "exe": "prettier-eslint",
+      \ "args": ["--stdin --print-width 80 --trailing-comma all"],
+      \ "stdin": 1,
+      \ }
+
+let g:neoformat_enabled_javascript = ["myprettiereslint"]
 let g:neoformat_enabled_python = ["yapf"]
 
 " Usability options {{{1
