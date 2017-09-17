@@ -296,6 +296,7 @@ augroup END
 
 augroup filetype_cpp
   autocmd!
+  " autocmd FileType cpp setlocal foldmethod=syntax
   " autocmd FileType cpp
   "       \ vnoremap <buffer> <leader>f
   "       \ :pyfile /usr/share/clang/clang-format.py<cr>
@@ -315,6 +316,10 @@ augroup END
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+augroup filetype_general
+  autocmd!
   autocmd FileType text,markdown,asciidoc setlocal spell
 augroup END
 
