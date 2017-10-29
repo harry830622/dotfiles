@@ -56,7 +56,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:ale_linters = {
       \ "javascript": ["eslint"],
       \ "c": [],
-      \ "cpp": []
+      \ "cpp": [],
+      \ "java": []
       \ }
 let g:ale_sign_error = "✗"
 let g:ale_sign_warning = "∆"
@@ -68,6 +69,7 @@ let g:ycm_global_ycm_extra_conf = g:dot_dir . "/vim/ycm_extra_conf.py"
 let g:ycm_error_symbol = "✗"
 let g:ycm_warning_symbol = "∆"
 " let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:EclimCompletionMethod = 'omnifunc'
 
 " Neoformat
 let g:neoformat_javascript_myprettiereslint = {
@@ -75,9 +77,16 @@ let g:neoformat_javascript_myprettiereslint = {
       \ "args": ["--stdin --print-width 80 --trailing-comma all"],
       \ "stdin": 1,
       \ }
+let g:neoformat_java_google = {
+      \ "exe": "java",
+      \ "args": ["-jar " . g:dot_dir . "/google-java-format.jar -"],
+      \ "stdin": 1,
+      \ }
 
+let g:neoformat_enabled_cpp = ["clangformat"]
 let g:neoformat_enabled_javascript = ["myprettiereslint"]
 let g:neoformat_enabled_python = ["yapf"]
+let g:neoformat_enabled_java = ["google"]
 
 " Usability options {{{1
 
@@ -311,6 +320,12 @@ augroup filetype_cpp
         \ . "viwU" . "yypwcwdefine\<esc>" . "o#endif\<esc>"
         \ . "ko\nclass " . expand("%:t:r") . "\<esc>" . "B~"
         \ . "A {\npublic:\nprivate:\n};\n\<esc>"
+augroup END
+
+augroup filetype_java
+  autocmd!
+  autocmd FileType java setlocal textwidth=100
+  autocmd FileType java setlocal colorcolumn=101
 augroup END
 
 augroup filetype_gitcommit
