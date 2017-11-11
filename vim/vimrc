@@ -277,16 +277,14 @@ nnoremap <leader>f :Neoformat<cr>
 " Change cursor shape in different mode
 augroup cursor_shape
   autocmd!
-  autocmd InsertEnter *
+  autocmd VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+  autocmd InsertEnter,InsertChange *
         \ if v:insertmode == 'i' |
-        \   silent execute "!" . g:dot_dir . "/vim/change_cursor.sh ibeam" |
+        \   silent execute '!echo -ne "\e[6 q"' | redraw! |
         \ elseif v:insertmode == 'r' |
-        \   silent execute "!" . g:dot_dir . "/vim/change_cursor.sh underline" |
+        \   silent execute '!echo -ne "\e[4 q"' | redraw! |
         \ endif
-  autocmd InsertLeave *
-        \ silent execute "!" . g:dot_dir . "/vim/change_cursor.sh block"
-  autocmd VimLeave *
-        \ silent execute "!" . g:dot_dir . "/vim/change_cursor.sh block"
+  autocmd VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
 augroup END
 
 augroup filetype_c
