@@ -8,7 +8,22 @@ if [[ ! -d "$workspace_dir" ]]; then
   mkdir "$workspace_dir"
 fi
 
-function pm_work {
+function pm() {
+  all_projects=()
+  for f in "$workspace_dir"/*; do
+    all_projects+=("$(basename "$f")")
+  done
+
+  projects=()
+  echo "Start WORKING on"
+  select project in "${all_projects[@]}"
+  do
+    pm_work "$project"
+  break
+  done
+}
+
+function pm_work() {
   if [[ "$1" == "" ]]; then
     echo "[ERROR] No project specified"
     return 1
