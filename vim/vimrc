@@ -33,6 +33,7 @@ Plug 'sbdchd/neoformat'
 Plug 'morhetz/gruvbox'
 
 Plug 'othree/html5.vim'
+Plug 'digitaltoad/vim-pug'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
@@ -232,10 +233,6 @@ nnoremap <leader>ev :edit $MYVIMRC<cr>
 " Source my vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" Map <c-l> (redraw screen) to also turn off search highlighting until the
-" next search
-nnoremap <leader>nh :nohlsearch<cr><c-l>
-
 " Get off my lawn
 nnoremap <left> :echoerr "Use h"<cr>
 nnoremap <right> :echoerr "Use l"<cr>
@@ -263,10 +260,8 @@ nnoremap <leader>pc :pclose<cr>
 " Easier to close location
 nnoremap <leader>lc :lclose<cr>
 
-" Easier to navigate buffers
-nnoremap <leader>bb :b#<cr>
-nnoremap <leader>bn :bn<cr>
-nnoremap <leader>bp :bp<cr>
+" Easier to manipulate buffers
+nnoremap =b :b#<cr>
 nnoremap <leader>bd :bd<cr>
 
 " Select the whole file
