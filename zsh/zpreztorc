@@ -106,7 +106,7 @@ zstyle ':prezto:module:node:info:version' format 'version:%v'
 #
 
 # Set the Pacman frontend.
-zstyle ':prezto:module:pacman' frontend 'pacaur'
+# zstyle ':prezto:module:pacman' frontend 'pacaur'
 
 #
 # Prompt
