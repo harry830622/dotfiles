@@ -28,7 +28,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'
 Plug 'junegunn/vim-easy-align'
-Plug 'sbdchd/neoformat'
 
 Plug 'morhetz/gruvbox'
 
@@ -55,23 +54,6 @@ let g:airline#extensions#ale#error_symbol = "✗ "
 let g:airline#extensions#ale#warning_symbol = "∆ "
 let g:airline#extensions#tabline#enabled = 1
 
-" Neoformat
-let g:neoformat_javascript_myprettiereslint = {
-      \ "exe": g:project_root_dir . "/node_modules/.bin/prettier-eslint",
-      \ "args": ["--stdin --eslint-config-path " . g:project_root_dir . "/.eslintrc --print-width 80 --trailing-comma all"],
-      \ "stdin": 1,
-      \ }
-let g:neoformat_java_google = {
-      \ "exe": "java",
-      \ "args": ["-jar " . g:dotfile_dir . "/google-java-format.jar -"],
-      \ "stdin": 1,
-      \ }
-
-let g:neoformat_enabled_cpp = ["clangformat"]
-let g:neoformat_enabled_javascript = ["myprettiereslint"]
-let g:neoformat_enabled_python = ["yapf"]
-let g:neoformat_enabled_java = ["google"]
-
 " ale
 let g:ale_linters = {
       \ "javascript": ["eslint"],
@@ -81,8 +63,9 @@ let g:ale_linters = {
       \ }
 let g:ale_sign_error = "✗"
 let g:ale_sign_warning = "∆"
-" let g:ale_javascript_eslint_use_global = 1
-" let g:ale_javascript_eslint_options = " --fix"
+let g:ale_fixers = {
+      \ "javascript": ["eslint"]
+      \ }
 
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = g:dotfile_dir . "/vim/ycm_extra_conf.py"
@@ -280,7 +263,7 @@ xmap ga <plug>(EasyAlign)
 nmap ga <plug>(EasyAlign)
 
 " Format a whole buffer using Neoformat
-nnoremap <leader>f :Neoformat<cr>
+nnoremap <leader>f :ALEFix<cr>
 
 " Autocmds {{{1
 
