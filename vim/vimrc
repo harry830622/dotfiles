@@ -57,14 +57,15 @@ let g:airline#extensions#tabline#enabled = 1
 " ale
 let g:ale_linters = {
       \ "javascript": ["eslint"],
-      \ "c": [],
-      \ "cpp": [],
-      \ "java": []
+      \ "c": ["clang-format"],
+      \ "cpp": ["clang-format"]
       \ }
 let g:ale_sign_error = "✗"
 let g:ale_sign_warning = "∆"
 let g:ale_fixers = {
-      \ "javascript": ["eslint"]
+      \ "javascript": ["eslint"],
+      \ "c": ["clang-format"],
+      \ "cpp": ["clang-format"]
       \ }
 
 " YouCompleteMe
@@ -307,10 +308,8 @@ augroup filetype_cpp
   "       \ vnoremap <buffer> <leader>f
   "       \ :pyfile /usr/share/clang/clang-format.py<cr>
   autocmd BufNewFile *.hpp
-        \ silent execute "normal! i#ifndef " . expand("%:t:r") . "_hpp\<esc>"
-        \ . "viwU" . "yypwcwdefine\<esc>" . "o#endif\<esc>"
-        \ . "ko\nclass " . expand("%:t:r") . "\<esc>" . "B~"
-        \ . "A {\npublic:\nprivate:\n};\n\<esc>"
+        \ nnoremap <buffer> <leader>i
+        \ i#ifndef <c-r>=expand("%:t:r")<cr>_hpp<esc>viwUyypwcwdefine<esc>o#endif<esc>O<cr>class <c-r>=expand("%:t:r")<cr><esc>A {<cr>public:<cr>private:<cr>};<cr><esc>
 augroup END
 
 augroup filetype_java
