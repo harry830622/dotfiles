@@ -24,10 +24,12 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
-Plug 'kien/ctrlp.vim'
 Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'
 Plug 'junegunn/vim-easy-align'
+Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
 
 Plug 'morhetz/gruvbox'
 
@@ -58,14 +60,16 @@ let g:airline#extensions#tabline#enabled = 1
 let g:ale_linters = {
       \ "javascript": ["eslint"],
       \ "c": ["clang-format"],
-      \ "cpp": ["clang-format"]
+      \ "cpp": ["clang-format"],
+      \ "python": ["flake8"]
       \ }
 let g:ale_sign_error = "✗"
 let g:ale_sign_warning = "∆"
 let g:ale_fixers = {
       \ "javascript": ["eslint"],
       \ "c": ["clang-format"],
-      \ "cpp": ["clang-format"]
+      \ "cpp": ["clang-format"],
+      \ "python": ["yapf"]
       \ }
 
 " YouCompleteMe
@@ -259,9 +263,8 @@ nnoremap <leader>pu :PlugUpdate<cr>
 nnoremap ]h :GitGutterNextHunk<cr>
 nnoremap [h :GitGutterPrevHunk<cr>
 
-" vim-easy-align
-xmap ga <plug>(EasyAlign)
-nmap ga <plug>(EasyAlign)
+" fzf
+nmap <c-p> :Files<cr>
 
 " Format a whole buffer using Neoformat
 nnoremap <leader>f :ALEFix<cr>
