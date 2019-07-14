@@ -1,0 +1,11 @@
+{
+  "diagnostic.errorSign": "✗",
+  "diagnostic.warningSign": "∆",
+  "diagnostic.infoSign": "∆",
+  "diagnostic.hintSign": "∆",
+  "eslint.autoFixOnSave": true,
+  "suggest.floatEnable": false,
+  "diagnostic.messageTarget": "echo",
+  "signature.target": "echo",
+  "javascript.suggestionActions.enabled": false
+}

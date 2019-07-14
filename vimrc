@@ -3,9 +3,6 @@
 
 " Variables {{{1
 
-let g:dotfile_dir = $dotfile_dir
-let g:project_root_dir = $project_root_dir
-
 " Plugins {{{1
 
 call plug#begin('~/.vim/plugged')
@@ -18,8 +15,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
@@ -29,58 +25,20 @@ Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+" Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 Plug 'morhetz/gruvbox'
 
 Plug 'othree/html5.vim'
-Plug 'digitaltoad/vim-pug'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Plug 'leafgarland/typescript-vim'
 " Plug 'peitalin/vim-jsx-typescript'
 
-Plug 'tmux-plugins/vim-tmux'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'edkolev/tmuxline.vim'
-Plug 'christoomey/vim-tmux-navigator'
-
 call plug#end()
 
 " Plugins' settings {{{1
-
-" vim-airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#ycm#enabled = 1
-" let g:airline#extensions#ycm#error_symbol = "✗ "
-" let g:airline#extensions#ycm#warning_symbol = "∆ "
-" let g:airline#extensions#ale#error_symbol = "✗ "
-" let g:airline#extensions#ale#warning_symbol = "∆ "
-
-" ale
-" let g:ale_linters = {
-"       \ "javascript": ["eslint"],
-"       \ "c": ["clang-format"],
-"       \ "cpp": ["clang-format"],
-"       \ "python": ["flake8"]
-"       \ }
-" let g:ale_sign_error = "✗"
-" let g:ale_sign_warning = "∆"
-" let g:ale_fixers = {
-"       \ "javascript": ["eslint"],
-"       \ "c": ["clang-format"],
-"       \ "cpp": ["clang-format"],
-"       \ "python": ["yapf"]
-"       \ }
-
-" YouCompleteMe
-" let g:ycm_global_ycm_extra_conf = g:dotfile_dir . "/vim/ycm_extra_conf.py"
-" let g:ycm_error_symbol = "✗"
-" let g:ycm_warning_symbol = "∆"
-" " let g:ycm_autoclose_preview_window_after_insertion = 1
-" let g:EclimCompletionMethod = "omnifunc"
-" let g:ycm_show_diagnostics_ui = 0
 
 " emmet
 let g:user_emmet_settings = {
@@ -93,7 +51,11 @@ let g:user_emmet_settings = {
       \ }
 
 " coc
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 EslintFix :CocCommand eslint.executeAutofix
+
+" easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " Usability options {{{1
 
@@ -186,6 +148,11 @@ syntax on
 
 " Support 256 colors environment
 set t_Co=256
+set termguicolors
+
+" set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " Set colorscheme
 set background=dark
@@ -272,6 +239,7 @@ nnoremap [h :GitGutterPrevHunk<cr>
 
 " fzf
 nmap <c-p> :Files<cr>
+nmap <c-o> :Buffers<cr>
 
 " coc
 inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -326,7 +294,7 @@ augroup END
 
 augroup filetype_js
   autocmd!
-  autocmd FileType javascript nnoremap <buffer> <leader>f :Prettier<cr>
+  autocmd FileType javascript nnoremap <buffer> <leader>f :EslintFix<cr>
 augroup END
 
 augroup filetype_java
