@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
 import qualified XMonad.StackSet as W
@@ -22,11 +23,12 @@ myConfig = desktopConfig
     , borderWidth = 0
     , workspaces  = myWorkspaces
     , layoutHook  = myLayoutHook
+    , handleEventHook    = fullscreenEventHook
     } `additionalKeysP` myKeys
 
 myWorkspaces = ["browse", "code", "etc"]
 
-myLayoutHook = gaps [(U,5), (D,5), (L,5), (R,5)] $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True $
+myLayoutHook = gaps [(U,5), (D,5), (L,5), (R,5)] $ spacingRaw False (Border 5 5 5 5) True (Border 5 5 5 5) True $
                layoutHook def
 
 myKeys =

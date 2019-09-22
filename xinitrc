@@ -1,10 +1,5 @@
 #!/bin/sh
 
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --output eDP-1-1 --auto --primary
-xrandr --output HDMI-0 --auto --right-of eDP-1-1 --rotate left --scale 1.2x1.2
-xrandr --dpi 144
-
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
@@ -37,9 +32,16 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --dpi 144
+xrandr --output eDP-1-1 --primary --mode 1920x1080 --pos 1800x1800
+xrandr --output HDMI-0 --mode 1920x1200 --pos 0x0 --rotate left --scale 1.5x1.5
+
+xbindkeys
+
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
-
 fcitx &
+
 exec xmonad > ~/.xmonad.log 2>&1

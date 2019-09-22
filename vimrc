@@ -3,6 +3,10 @@
 
 " Variables {{{1
 
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
 " Plugins {{{1
 
 call plug#begin('~/.vim/plugged')
@@ -29,16 +33,22 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 
 Plug 'morhetz/gruvbox'
 
+Plug 'neoclide/jsonc.vim'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-" Plug 'leafgarland/typescript-vim'
-" Plug 'peitalin/vim-jsx-typescript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 call plug#end()
 
 " Plugins' settings {{{1
+
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ }
 
 " emmet
 let g:user_emmet_settings = {
@@ -132,14 +142,9 @@ set colorcolumn=81
 set cursorline
 
 " Set the timeout for mapping in ms, default is 1000
-" set timeoutlen=500
-
 set updatetime=300
 
-" Load cscope database
-set cscopetag
-set csto=0
-cs add cscope.out
+set noshowmode
 
 " Color schemes {{{1
 
@@ -247,50 +252,6 @@ inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 " inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Autocmds {{{1
-
-" Change cursor shape in different mode
-augroup cursor_shape
-  autocmd!
-  autocmd VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
-  autocmd InsertEnter,InsertChange *
-        \ if v:insertmode == 'i' |
-        \   silent execute '!echo -ne "\e[6 q"' | redraw! |
-        \ elseif v:insertmode == 'r' |
-        \   silent execute '!echo -ne "\e[4 q"' | redraw! |
-        \ endif
-  autocmd VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
-augroup END
-
-augroup filetype_c
-  autocmd!
-  autocmd FileType c nnoremap <buffer> <leader>css
-        \ :cs find s <c-r>=expand("<cword>")<cr><cr>
-  autocmd FileType c nnoremap <buffer> <leader>csg
-        \ :cs find g <c-r>=expand("<cword>")<cr><cr>
-  autocmd FileType c nnoremap <buffer> <leader>csc
-        \ :cs find c <c-r>=expand("<cword>")<cr><cr>
-  autocmd FileType c nnoremap <buffer> <leader>cst
-        \ :cs find t <c-r>=expand("<cword>")<cr><cr>
-  autocmd FileType c nnoremap <buffer> <leader>cse
-        \ :cs find e <c-r>=expand("<cword>")<cr><cr>
-  autocmd FileType c nnoremap <buffer> <leader>csf
-        \ :cs find f <c-r>=expand("<cfile>")<cr><cr>
-  autocmd FileType c nnoremap <buffer> <leader>csi
-        \ :cs find i ^<c-r>=expand("<cfile>")<cr>$<cr>
-  autocmd FileType c nnoremap <buffer> <leader>csd
-        \ :cs find d <c-r>=expand("<cword>")<cr><cr>
-augroup END
-
-augroup filetype_cpp
-  autocmd!
-  " autocmd FileType cpp setlocal foldmethod=syntax
-  " autocmd FileType cpp
-  "       \ vnoremap <buffer> <leader>f
-  "       \ :pyfile /usr/share/clang/clang-format.py<cr>
-  autocmd BufNewFile *.hpp
-        \ nnoremap <buffer> <leader>i
-        \ i#ifndef <c-r>=expand("%:t:r")<cr>_hpp<esc>viwUyypwcwdefine<esc>o#endif<esc>O<cr>class <c-r>=expand("%:t:r")<cr><esc>A {<cr>public:<cr>private:<cr>};<cr><esc>
-augroup END
 
 augroup filetype_js
   autocmd!
