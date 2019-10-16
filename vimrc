@@ -28,18 +28,18 @@ Plug 'junegunn/vim-easy-align'
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-" Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'suy/vim-context-commentstring'
 
 Plug 'morhetz/gruvbox'
 
 Plug 'neoclide/jsonc.vim'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+" Plug 'peitalin/vim-jsx-typescript'
 
 call plug#end()
 
