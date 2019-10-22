@@ -25,7 +25,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/vim-easy-align'
-Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -148,20 +148,17 @@ set noshowmode
 
 " Color schemes {{{1
 
-" Enable syntax highlighting
-syntax on
-
 " Support 256 colors environment
-set t_Co=256
-set termguicolors
-
-" set Vim-specific sequences for RGB colors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
 
 " Set colorscheme
 set background=dark
 colorscheme gruvbox
+
+" Enable syntax highlighting
+syntax on
 
 " Indentation options {{{1
 
