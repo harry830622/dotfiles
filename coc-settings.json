@@ -3,9 +3,8 @@
   "diagnostic.warningSign": "∆",
   "diagnostic.infoSign": "∆",
   "diagnostic.hintSign": "∆",
+  "eslint.filetypes": ["javascript", "typescript"],
   "eslint.autoFixOnSave": true,
-  "suggest.floatEnable": false,
-  "diagnostic.messageTarget": "echo",
-  "signature.target": "echo",
-  "javascript.suggestionActions.enabled": false
+  /* "javascript.suggest.enabled": false, */
+  /* "typescript.suggest.enabled": false, */
 }

@@ -250,9 +250,14 @@ inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " Autocmds {{{1
 
-augroup filetype_js
+augroup filetype_javascript
   autocmd!
   autocmd FileType javascript nnoremap <buffer> <leader>f :EslintFix<cr>
+augroup END
+
+augroup filetype_typescript
+  autocmd!
+  autocmd FileType typescript nnoremap <buffer> <leader>f :EslintFix<cr>
 augroup END
 
 augroup filetype_java
