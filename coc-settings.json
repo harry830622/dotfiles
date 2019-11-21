@@ -3,8 +3,11 @@
   "diagnostic.warningSign": "∆",
   "diagnostic.infoSign": "∆",
   "diagnostic.hintSign": "∆",
-  "eslint.filetypes": ["javascript", "typescript"],
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "eslint.autoFixOnSave": true,
-  /* "javascript.suggest.enabled": false, */
-  /* "typescript.suggest.enabled": false, */
 }

@@ -18,7 +18,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-abolish'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
@@ -27,9 +27,9 @@ Plug 'mattn/emmet-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'suy/vim-context-commentstring'
+Plug 'svermeulen/vim-cutlass'
 
 Plug 'morhetz/gruvbox'
 
@@ -44,6 +44,17 @@ Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 " Plugins' settings {{{1
+
+" coc
+let g:coc_global_extensions = [
+      \ 'coc-tsserver',
+      \ 'coc-eslint',
+      \ 'coc-json',
+      \ 'coc-html',
+      \ 'coc-css',
+      \ 'coc-yaml',
+      \ 'coc-snippets',
+      \ ]
 
 " lightline
 let g:lightline = {
@@ -60,12 +71,20 @@ let g:user_emmet_settings = {
       \   },
       \ }
 
-" coc
-command! -nargs=0 EslintFix :CocCommand eslint.executeAutofix
-
 " easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" cutlass
+nnoremap x d
+xnoremap x d
+nnoremap s d
+xnoremap s d
+
+nnoremap xx dd
+nnoremap X D
+nnoremap ss cc
+nnoremap S C
 
 " Usability options {{{1
 
@@ -170,9 +189,6 @@ set shiftwidth=2
 
 " Abbreviations {{{1
 
-iabbrev atg harry830622@gmail.com
-iabbrev ateda yhchang@eda.ee.ntu.edu.tw
-
 " Mappings {{{1
 
 " Map <leader>
@@ -209,10 +225,6 @@ nnoremap <leader>w :update<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>x :x<cr>
 
-" Easier to copy to & paste from the system clipboard
-vnoremap <leader>y "+y
-nnoremap <leader>p "+p
-
 " Toggle folding
 nnoremap <leader>z za
 
@@ -244,21 +256,36 @@ nmap <c-p> :Files<cr>
 nmap <c-o> :Buffers<cr>
 
 " coc
-inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " Autocmds {{{1
-
-augroup filetype_javascript
-  autocmd!
-  autocmd FileType javascript nnoremap <buffer> <leader>f :EslintFix<cr>
-augroup END
-
-augroup filetype_typescript
-  autocmd!
-  autocmd FileType typescript nnoremap <buffer> <leader>f :EslintFix<cr>
-augroup END
 
 augroup filetype_java
   autocmd!
