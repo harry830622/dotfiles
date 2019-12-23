@@ -29,7 +29,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'suy/vim-context-commentstring'
-Plug 'svermeulen/vim-cutlass'
 
 Plug 'morhetz/gruvbox'
 
@@ -56,6 +55,8 @@ let g:coc_global_extensions = [
       \ 'coc-snippets',
       \ ]
 
+command! -nargs=0 Format :call CocAction('format')
+
 " lightline
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
@@ -74,17 +75,6 @@ let g:user_emmet_settings = {
 " easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-" cutlass
-nnoremap x d
-xnoremap x d
-nnoremap s d
-xnoremap s d
-
-nnoremap xx dd
-nnoremap X D
-nnoremap ss cc
-nnoremap S C
 
 " Usability options {{{1
 
@@ -263,6 +253,8 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <leader>f :Format<cr>
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
