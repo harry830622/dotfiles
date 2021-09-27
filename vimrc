@@ -39,6 +39,7 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'leafgarland/typescript-vim'
 " Plug 'peitalin/vim-jsx-typescript'
+Plug 'tomlion/vim-solidity'
 
 call plug#end()
 
@@ -53,9 +54,8 @@ let g:coc_global_extensions = [
       \ 'coc-css',
       \ 'coc-yaml',
       \ 'coc-snippets',
+      \ 'coc-go',
       \ ]
-
-command! -nargs=0 Format :call CocAction('format')
 
 " lightline
 let g:lightline = {
@@ -158,8 +158,6 @@ set noshowmode
 " Color schemes {{{1
 
 " Support true colors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
 " Set colorscheme
@@ -254,7 +252,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-nnoremap <leader>f :Format<cr>
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :

@@ -3,13 +3,9 @@
   "diagnostic.warningSign": "∆",
   "diagnostic.infoSign": "∆",
   "diagnostic.hintSign": "∆",
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
   "eslint.autoFixOnSave": true,
+  "eslint.packageManager": "yarn",
+  "eslint.debug": true,
   "languageserver": {
     "clangd": {
       "command": "clangd",
