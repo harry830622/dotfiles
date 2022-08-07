@@ -1,9 +1,11 @@
 {
+  "suggest.noselect": true,
   "diagnostic.errorSign": "✗",
   "diagnostic.warningSign": "∆",
   "diagnostic.infoSign": "∆",
   "diagnostic.hintSign": "∆",
   "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
-  "eslint.debug": true,
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.lintTask.options": [".", "--ext", ".ts"]
 }
