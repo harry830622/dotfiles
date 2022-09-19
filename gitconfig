@@ -12,3 +12,5 @@
 	cm = commit
 	st = status
 	bh = branch
+[init]
+	defaultBranch = main

@@ -213,6 +213,7 @@ let g:coc_global_extensions = [
       \ 'coc-yaml',
       \ 'coc-go',
       \ 'coc-solidity',
+      \ 'coc-rust-analyzer',
       \ ]
 
 " lightline
