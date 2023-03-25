@@ -4,6 +4,14 @@
   "diagnostic.warningSign": "∆",
   "diagnostic.infoSign": "∆",
   "diagnostic.hintSign": "∆",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "graphql"
+  ],
   "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],

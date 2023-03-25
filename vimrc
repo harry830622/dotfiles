@@ -41,6 +41,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 " Plug 'tomlion/vim-solidity'
 Plug 'TovarishFin/vim-solidity'
+Plug 'pantharshit00/vim-prisma'
 
 call plug#end()
 
